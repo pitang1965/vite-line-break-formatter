@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- OGP 一般設定 -->
+    <meta property="og:title" content="翻訳のための改行調整" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://line-break-formatter.netlify.app/"
+    />
+    <meta property="og:image" content="src/images/link-banner.jpg" />
+    <meta
+      property="og:description"
+      content="Google等での翻訳前に不要な改行を除去します。"
+    />
+
+    <!-- OGP Twitter向け設定 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pitang1965" />
+    <meta name="twitter:creator" content="@pitang1965" />
+
+    <!-- OGP Facebookインサイト向け設定 -->
+    <meta property="fb:app_id" content="341893620195963" />
+
+    <title>翻訳のための改行調整</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/triangles.css" />
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>翻訳のための改行調整</h1>
+      <div id="usage">
+        <div id="usage-container">
+          <div class="triangle-right" id="help_triangle_right"></div>
+          <p>使い方</p>
+        </div>
+        <div class="display-none" id="help">
+          <ol>
+            <li>別アプリ等で整形したいテキストをコピー(Ctrl+C)</li>
+            <li>左のテキストエリアに貼り付け(Ctrl+V)</li>
+            <li>Google翻訳など整形結果を使いたいアプリに貼り付け(Ctrl+V)</li>
+          </ol>
+        </div>
+      </div>
+    </header>
+    <div id="text-areas-container">
+      <div id="left-zone">
+        <textarea
+          name="input-text"
+          id="input-text"
+          rows="20"
+          cols="40"
+          placeholder="英文をここに入力してください。"
+        ></textarea>
+        <div id="clear">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div id="right-zone">
+        <textarea
+          name="output-text"
+          readonly
+          id="output-text"
+          rows="20"
+          cols="40"
+          placeholder="整形後のテキストがこちらに出力されます。"
+        ></textarea>
+      </div>
+    </div>
+    <div id="controller">
+      <input
+        type="checkbox"
+        name="break-at-period"
+        id="break-at-period"
+        checked
+      />
+      <label for="break-at-period">ピリオドで改行する</label>
+      <input
+        type="checkbox"
+        name="break-at-period"
+        id="convert-linebreak-to-space"
+        unchecked
+      />
+      <label for="convert-linebreak-to-space"
+        >不適切な改行をスペースに変換する</label
+      >
+      <input
+        type="checkbox"
+        name="break-at-linehead-upper-character"
+        id="break-at-linehead-upper-character"
+        unchecked
+      />
+      <label for="break-at-linehead-upper-character"
+        >行頭が大文字なら手前で無条件改行する</label
+      >
+    </div>
+    <footer>
+      <iframe
+        src="src/footer.html"
+        width="800"
+        height="200"
+        frameborder="0"
+      ></iframe>
+    </footer>
+    <script src="src/main.js"></script>
+    <script src="src/format-text.js"></script>
+  </body>
+</html>
