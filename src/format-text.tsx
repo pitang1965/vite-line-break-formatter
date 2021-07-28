@@ -3,21 +3,21 @@
 /* 
  関数概要：Google翻訳などのために改行を調整する関数 
 引数：inputText：入力のテキスト 
-　　　breakAtPeriod：ピリオド(.)で改行(\n\n)するかどうか。true又はfalse。 
-     convertLinebreakToSpace：不適切な改行をスペースに変換するかどうか。true又はfalse。 
-     breakAtLineheadUpperCharacter：行頭が大文字なら前の行末が不適切に改行されていていも改行する。true又はfalse。 
+　　　breakAtPeriod：ピリオド(.)で改行(\n\n)するかどうか。 
+     convertLinebreakToSpace：不適切な改行をスペースに変換するかどうか。 
+     breakAtLineheadUpperCharacter：行頭が大文字なら前の行末が不適切に改行されていていも改行する。
 戻り値：改行が調整されたテキスト 
 */
 function formatTextData(
-  inputText,
-  breakAtPeriod,
-  convertLinebreakToSpace,
-  breakAtLineheadUpperCharacter
-) {
-  var outputText = '';
+  inputText:string,
+  breakAtPeriod:boolean,
+  convertLinebreakToSpace:boolean,
+  breakAtLineheadUpperCharacter:boolean
+):string {
+  let outputText = '';
 
-  for (var i = 0; i < inputText.length; i++) {
-    var currentChar = inputText[i];
+  for (let i = 0; i < inputText.length; i++) {
+    const currentChar = inputText[i];
     // ★改行の取扱
     if (isNewLineCharacter(currentChar)) {
       // 適切な改行なら採用する
@@ -92,51 +92,37 @@ function formatTextData(
 }
 
 // 文字が大文字かどうか調べる
-function isUpperCase(aChar) {
+function isUpperCase(aChar:string):boolean {
   if (isWhiteSpace(aChar)) {
     return false;
   }
-  if (aChar == aChar.toUpperCase()) {
-    return true;
-  } else {
-    return false;
-  }
+  return (aChar === aChar.toUpperCase());
 }
+
 
 // 文字が改行文字かどうか調べる
-function isNewLineCharacter(aChar) {
-  if (aChar == '\r') {
-    console.log('★CR');
-    return true;
-  } else if (aChar == '\n') {
-    console.log('★LF');
-    return true;
-  } else {
-    return false;
-  }
+function isNewLineCharacter(aChar: string) {
+  const firstChar = aChar[0];
+  return (firstChar === '\r' || firstChar === '\n');
 }
+
 
 //文字がホワイトスペースかどうか調べる
-function isWhiteSpace(aChar) {
-  var charCode = aChar.charCodeAt(0);
-  if ((0x09 <= charCode && charCode <= 0x0d) || charCode == 0x20) {
-    return true;
-  }
-
-  return false;
+function isWhiteSpace(aChar:string) {
+  const charCode = aChar.charCodeAt(0);
+  return((0x09 <= charCode && charCode <= 0x0d) || charCode == 0x20);
 }
+
+
 //文字がスペース文字(0x20)かどうか調べる
-function is0x20Space(aChar) {
-  var charCode = aChar.charCodeAt(0);
-  if (charCode == 0x20) {
-    return true;
-  }
-
-  return false;
+function is0x20Space(aChar:string) {
+  const charCode = aChar.charCodeAt(0);
+  return (charCode === 0x20);
 }
+
 
 // 翻訳のために適切な改行か調べる
-function isAppropriateLineBreak(text, index, breakAtLineheadUpperCharacter) {
+function isAppropriateLineBreak(text:string, index:number, breakAtLineheadUpperCharacter:boolean) {
   // 手前の文字がホワイトスペースなら適切
   if (index != 0 && isWhiteSpace(text[index - 1])) {
     return true;
@@ -163,3 +149,14 @@ function isAppropriateLineBreak(text, index, breakAtLineheadUpperCharacter) {
   console.log('不要な改行');
   return false;
 }
+
+
+// テスト
+console.log(isNewLineCharacter('\r ') ? '改行文字' : '非改行文字');
+console.log(isNewLineCharacter(' x') ? '改行文字' : '非改行文字');
+
+console.log(isUpperCase('A ') ? '大文字' : '小文字');
+console.log(isUpperCase('a ') ? '大文字' : '小文字');
+
+console.log(isWhiteSpace('A ') ? 'ホワイトスペース' : '非ホワイトスペース');
+console.log(isWhiteSpace(' x') ? 'ホワイトスペース' : '非ホワイトスペース');
