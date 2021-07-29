@@ -1,5 +1,7 @@
 'use strict';
 
+import { formatTextData } from './format-text';
+
 const triangle_right = document.getElementById(
   'help_triangle_right'
 ) as HTMLImageElement;

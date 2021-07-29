@@ -8,12 +8,12 @@
      breakAtLineheadUpperCharacter：行頭が大文字なら前の行末が不適切に改行されていていも改行する。
 戻り値：改行が調整されたテキスト 
 */
-function formatTextData(
-  inputText:string,
-  breakAtPeriod:boolean,
-  convertLinebreakToSpace:boolean,
-  breakAtLineheadUpperCharacter:boolean
-):string {
+export function formatTextData(
+  inputText: string,
+  breakAtPeriod: boolean,
+  convertLinebreakToSpace: boolean,
+  breakAtLineheadUpperCharacter: boolean
+): string {
   let outputText = '';
 
   for (let i = 0; i < inputText.length; i++) {
@@ -92,37 +92,37 @@ function formatTextData(
 }
 
 // 文字が大文字かどうか調べる
-function isUpperCase(aChar:string):boolean {
+function isUpperCase(aChar: string): boolean {
   if (isWhiteSpace(aChar)) {
     return false;
   }
-  return (aChar === aChar.toUpperCase());
+  return aChar === aChar.toUpperCase();
 }
-
 
 // 文字が改行文字かどうか調べる
 function isNewLineCharacter(aChar: string) {
   const firstChar = aChar[0];
-  return (firstChar === '\r' || firstChar === '\n');
+  return firstChar === '\r' || firstChar === '\n';
 }
-
 
 //文字がホワイトスペースかどうか調べる
-function isWhiteSpace(aChar:string) {
+function isWhiteSpace(aChar: string) {
   const charCode = aChar.charCodeAt(0);
-  return((0x09 <= charCode && charCode <= 0x0d) || charCode == 0x20);
+  return (0x09 <= charCode && charCode <= 0x0d) || charCode == 0x20;
 }
-
 
 //文字がスペース文字(0x20)かどうか調べる
-function is0x20Space(aChar:string) {
+function is0x20Space(aChar: string) {
   const charCode = aChar.charCodeAt(0);
-  return (charCode === 0x20);
+  return charCode === 0x20;
 }
 
-
 // 翻訳のために適切な改行か調べる
-function isAppropriateLineBreak(text:string, index:number, breakAtLineheadUpperCharacter:boolean) {
+function isAppropriateLineBreak(
+  text: string,
+  index: number,
+  breakAtLineheadUpperCharacter: boolean
+) {
   // 手前の文字がホワイトスペースなら適切
   if (index != 0 && isWhiteSpace(text[index - 1])) {
     return true;
@@ -149,7 +149,6 @@ function isAppropriateLineBreak(text:string, index:number, breakAtLineheadUpperC
   console.log('不要な改行');
   return false;
 }
-
 
 // テスト
 console.log(isNewLineCharacter('\r ') ? '改行文字' : '非改行文字');
