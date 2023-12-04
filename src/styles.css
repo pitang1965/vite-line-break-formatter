@@ -14,27 +14,28 @@ header {
   text-align: center;
 }
 
-#usage-container {
-  display: inline-flex;
-  font-size: 20px;
-}
-
-#usage-container p {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-#help_triangle_right {
-  transition: 0.1s;
-}
-
-#help_triangle_right.show-help {
-  transition: 0.1s;
-  transform: rotate(90deg);
-}
-
 #usage {
   text-align: left;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::before {
+  content: '▼';
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: #008080;
+}
+
+details[open] summary::before {
+  transform: rotate(0deg);
+}
+
+details:not([open]) summary::before {
+  transform: rotate(-90deg);
 }
 
 .display-none {

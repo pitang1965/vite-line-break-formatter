@@ -38,19 +38,14 @@
   <body>
     <header>
       <h1>翻訳のための改行調整</h1>
-      <div id="usage">
-        <div id="usage-container">
-          <div class="triangle-right" id="help_triangle_right"></div>
-          <p>使い方</p>
-        </div>
-        <div class="display-none" id="help">
-          <ol>
-            <li>別アプリ等で整形したいテキストをコピー(Ctrl+C)</li>
-            <li>左のテキストエリアに貼り付け(Ctrl+V)</li>
-            <li>Google翻訳など整形結果を使いたいアプリに貼り付け(Ctrl+V)</li>
-          </ol>
-        </div>
-      </div>
+      <details open id="usage">
+        <summary id="usage-summary">使い方</summary>
+        <ol>
+          <li>別アプリ等で整形したいテキストをコピー(Ctrl+C)</li>
+          <li>左のテキストエリアに貼り付け(Ctrl+V)</li>
+          <li>Google翻訳など整形結果を使いたいアプリに貼り付け(Ctrl+V)</li>
+        </ol>
+      </details>
     </header>
     <div id="text-areas-container">
       <div id="left-zone">

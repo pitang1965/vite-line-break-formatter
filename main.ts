@@ -1,11 +1,6 @@
 import './src/styles.css';
-import './src/triangles.css';
 import { formatTextData } from './src/format-text';
 
-const triangle_right = document.getElementById(
-  'help_triangle_right'
-) as HTMLImageElement;
-const help = document.getElementById('help') as HTMLDivElement;
 const inputText = document.getElementById('input-text') as HTMLInputElement;
 const clear = document.getElementById('clear') as HTMLButtonElement;
 const outputText = document.getElementById(
@@ -20,12 +15,6 @@ const convertLinebreakToSpace = document.getElementById(
 const breakAtLineheadUpperCharacter = document.getElementById(
   'break-at-linehead-upper-character'
 ) as HTMLInputElement;
-
-triangle_right.addEventListener('click', () => {
-  console.log('triangle_right');
-  triangle_right.classList.toggle('show-help');
-  help.classList.toggle('display-none');
-});
 
 inputText.addEventListener('input', () => formatText());
 
