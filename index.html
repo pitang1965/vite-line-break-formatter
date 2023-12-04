@@ -77,34 +77,39 @@
       </div>
     </div>
     <div id="controller">
-      <input
-        type="checkbox"
-        name="break-at-period"
-        id="break-at-period"
-        checked
-      />
-      <label for="break-at-period">ピリオドで改行する</label>
-      <input
-        type="checkbox"
-        name="break-at-period"
-        id="convert-linebreak-to-space"
-        unchecked
-      />
-      <label for="convert-linebreak-to-space"
-        >不適切な改行をスペースに変換する</label
+      <label>
+        <input
+          type="checkbox"
+          name="break-at-period"
+          id="break-at-period"
+          checked
+        />
+        ピリオドで改行する
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          name="break-at-period"
+          id="convert-linebreak-to-space"
+          unchecked
+        />
+        不適切な改行をスペースに変換する</label
       >
-      <input
-        type="checkbox"
-        name="break-at-linehead-upper-character"
-        id="break-at-linehead-upper-character"
-        unchecked
-      />
-      <label for="break-at-linehead-upper-character"
-        >行頭が大文字なら手前で無条件改行する</label
+      <label>
+        <input
+          type="checkbox"
+          name="break-at-linehead-upper-character"
+          id="break-at-linehead-upper-character"
+          unchecked
+        />
+        行頭が大文字なら手前で無条件改行する</label
       >
     </div>
     <footer>
-      <a href="https://over40web.club/" target="_blank">Powerd by Over 40 Web Club</a>
+      <a href="https://over40web.club/" target="_blank"
+        >Powerd by Over 40 Web Club</a
+      >
     </footer>
     <script type="module" src="./main.ts"></script>
   </body>
